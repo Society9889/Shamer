@@ -19663,7 +19663,11 @@
 		},
 	
 		timeToShame: function(){
+			var d = document.getElementById("bell");
+				d.className += " bellAnimation";
 			document.getElementById('shame-audio').play();
+			setTimeout(function() { document.getElementById("bell").className=""; }, 2100);
+	
 		},
 	
 		sendShameFromBoard: function(){
@@ -19673,7 +19677,7 @@
 		render: function() {
 			return (
 					React.createElement("div", {className: "shameContainer"}, 
-						React.createElement("img", {src: "/img/bell.png"}), 
+						React.createElement("img", {id: "bell", className: "", src: "/img/bell.png"}), 
 						React.createElement("audio", {className: "hidden-audio", id: "shame-audio", controls: true, src: "/media/shame-1.mp3", type: "audio/mpeg"})
 	
 					)
@@ -19719,7 +19723,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".shameContainer {\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: auto;\n  margin-top: 10%; }\n\n.center-mid {\n  text-align: center; }\n\n.hidden-audio {\n  display: none; }\n", ""]);
+	exports.push([module.id, ".shameContainer {\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: auto;\n  margin-top: 10%; }\n\n.center-mid {\n  text-align: center; }\n\n.hidden-audio {\n  display: none; }\n\n.bellAnimation {\n  -webkit-animation: spin 1s linear;\n  -moz-animation: spin 1s linear;\n  animation: spin 1s linear;\n  transform-origin: 50% 0%; }\n\n@keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); } }\n", ""]);
 	
 	// exports
 
