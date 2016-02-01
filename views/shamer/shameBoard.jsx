@@ -12,8 +12,7 @@ var ShameBoardComponent = React.createClass({
 	},
 
 	timeToShame: function(){
-		var d = document.getElementById("bell");
-			d.className += " bellAnimation";
+		setTimeout(function() {document.getElementById('bell').className+=" bellAnimation"; } , 500);
 		document.getElementById('shame-audio').play();
 		setTimeout(function() { document.getElementById("bell").className=""; }, 2100);
 
@@ -28,7 +27,6 @@ var ShameBoardComponent = React.createClass({
 				<div className="shameContainer">
 					<img id="bell" className="" src="/img/bell.png"/>
 					<audio className="hidden-audio" id="shame-audio" controls src="/media/shame-1.mp3" type="audio/mpeg"/>
-
 				</div>
 		)
 	}

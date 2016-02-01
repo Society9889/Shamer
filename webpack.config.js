@@ -7,6 +7,7 @@ module.exports = {
 	entry: {
 		shamer: './views/entries/shameEntry.jsx',
 		shameBoard: './views/entries/shameBoardEntry.jsx',
+        testBoard: './views/entries/testBuildEntry.jsx',
 	},
 	output: {
 		path: path.join(__dirname,'public/js'),
