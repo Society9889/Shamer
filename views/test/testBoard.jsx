@@ -1,16 +1,20 @@
 require('./testBoard.scss');
 require('bootstrap/dist/css/bootstrap.css');
+var io = require('socket.io-client');
+var socket = io.connect();
 
 var React = require('react');
 
 var TestBoardComponent = React.createClass({
 
 	componentDidMount: function(){
-		
+		socket.on('buildResult', function(data){
+			console.log(data);
+		})
 	},
 
-	timeToShame: function(){
-
+	checkBuild: function(){
+		socket.emit('checkBuild')
 	},
 
 	render: function() {
@@ -30,6 +34,7 @@ var TestBoardComponent = React.createClass({
 					</div>
 
 				</div>
+				<button  className="btn btn-primary" type="button" onClick={this.checkBuild}>Shame!</button>
 
 			</div>
 		)

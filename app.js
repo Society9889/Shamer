@@ -6,7 +6,7 @@ var path = require("path");
 var io = require('socket.io')(server);
 var socket = require('./sockets/socket.js')
 
-//var host = '172.16.4.75';
+//var host = '172.16.4.97';
 var host = 'localhost';
 var port = 3000;
 
