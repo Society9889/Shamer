@@ -20,7 +20,8 @@ module.exports = {
             { test: /\.scss$/, loaders: ["style", "css", "sass"]},
             
             { test: /bootstrap\/js\//, loader: 'imports?jQuery=jquery' },
-            { test: /\.png$/, loader: 'file-loader' },
+            { test: /\.png$/, loader: 'file-loader?name=/img/[name].[ext]' },
+            { test: /\.jpg$/, loader: 'file-loader' },
             { test: /\.(woff|woff2)$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
             { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url-loader?limit=10000&minetype=application/octet-stream" },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file-loader" },

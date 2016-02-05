@@ -9307,6 +9307,7 @@
 	 */
 	var EventInterface = {
 	  type: null,
+	  target: null,
 	  // currentTarget is set when dispatching; no use in copying it here
 	  currentTarget: emptyFunction.thatReturnsNull,
 	  eventPhase: null,
@@ -9340,8 +9341,6 @@
 	  this.dispatchConfig = dispatchConfig;
 	  this.dispatchMarker = dispatchMarker;
 	  this.nativeEvent = nativeEvent;
-	  this.target = nativeEventTarget;
-	  this.currentTarget = nativeEventTarget;
 	
 	  var Interface = this.constructor.Interface;
 	  for (var propName in Interface) {
@@ -9352,7 +9351,11 @@
 	    if (normalize) {
 	      this[propName] = normalize(nativeEvent);
 	    } else {
-	      this[propName] = nativeEvent[propName];
+	      if (propName === 'target') {
+	        this.target = nativeEventTarget;
+	      } else {
+	        this[propName] = nativeEvent[propName];
+	      }
 	    }
 	  }
 	
@@ -13201,7 +13204,10 @@
 	      }
 	    });
 	
-	    nativeProps.children = content;
+	    if (content) {
+	      nativeProps.children = content;
+	    }
+	
 	    return nativeProps;
 	  }
 	
@@ -18674,7 +18680,7 @@
 	
 	'use strict';
 	
-	module.exports = '0.14.6';
+	module.exports = '0.14.7';
 
 /***/ },
 /* 147 */
@@ -27467,6 +27473,10 @@
 	
 	var TestBoardComponent = React.createClass({displayName: "TestBoardComponent",
 	
+		getInitialState: function(){
+			return{count: 1};
+		},
+	
 		componentDidMount: function(){
 			socket.on('buildResult', function(data){
 				console.log(data);
@@ -27475,27 +27485,35 @@
 	
 		checkBuild: function(){
 			socket.emit('checkBuild')
+			this.setState({count: this.state.count+1});
 		},
 	
 		render: function() {
-			return (
-				React.createElement("div", {className: "blog-masthead"}, 
-						React.createElement("nav", {className: "blog-nav"}, 
-							React.createElement("img", {id: "bell", className: "bell nav-item", src: "/img/bell.png"}), 
-							React.createElement("h2", {className: "nav-item"}, "Build Alert")
-						), 
-					React.createElement("div", {className: "container"}, 
-						React.createElement("div", {className: "card"}, 
-							React.createElement("p", null, "Hello my name is joe")
-						), 
 	
-						React.createElement("div", {className: "card"}, 
-							React.createElement("p", null, "Hello my name is joe")
+			var rows = [];
+	
+			for (var i = this.state.count; i > 0; i --){
+				rows.push(
+					React.createElement("div", {className: "card"}, 
+						React.createElement("h2", {className: "card-title"}, "Hello ", i), 
+						React.createElement("p", null, "Sup yo someone brok the build")
+					)
+				)
+			}
+	
+			return (
+				React.createElement("div", {className: "alertContainer"}, 
+					React.createElement("div", {className: "blog-masthead"}, 
+							React.createElement("nav", {className: "blog-nav"}, 
+								React.createElement("img", {id: "bell", className: "bell nav-item", src: "/img/bell.png"}), 
+								React.createElement("h2", {className: "nav-item"}, "Build Alert"), 
+								React.createElement("button", {className: "btn btn-primary", type: "button", onClick: this.checkBuild}, "Shame!")
+							), 
+						React.createElement("div", {className: "container"}, 
+							rows
 						)
 	
-					), 
-					React.createElement("button", {className: "btn btn-primary", type: "button", onClick: this.checkBuild}, "Shame!")
-	
+					)
 				)
 			)
 		}
@@ -27539,10 +27557,16 @@
 	
 	
 	// module
-	exports.push([module.id, ".blog-masthead {\n  background-color: #428bca;\n  height: 90px;\n  box-shadow: 0px 5px 5px #888888; }\n\n.container {\n  width: 970px; }\n\n.blog-nav-item {\n  position: relative;\n  display: inline-block;\n  padding: 10px 10px 10px 10px;\n  font-weight: 500;\n  color: #cdddeb;\n  font-size: 14px; }\n\n.nav-item {\n  display: inline-block; }\n\n.bell {\n  height: 64px; }\n", ""]);
+	exports.push([module.id, ".blog-masthead {\n  background-color: #428bca;\n  height: 90px;\n  box-shadow: 0px 5px 5px #888888; }\n\n.container {\n  width: 970px;\n  font-size: 18px;\n  line-height: 1.5;\n  height: 700px;\n  overflow-y: auto; }\n\n.blog-nav-item {\n  position: relative;\n  display: inline-block;\n  padding: 10px 10px 10px 10px;\n  font-weight: 500;\n  color: #cdddeb;\n  font-size: 14px;\n  position: fixed; }\n\n.nav-item {\n  display: inline-block;\n  height: 90px; }\n\n.bell {\n  height: 64px; }\n\n.card {\n  margin-bottom: 20px;\n  background-color: #E1E1E8;\n  padding: 10px; }\n\n.card-title {\n  margin-bottom: 5px;\n  font-size: 40px; }\n\n.alertContainer {\n  background-image: url(" + __webpack_require__(222) + "); }\n", ""]);
 	
 	// exports
 
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "public/img/ocean.png";
 
 /***/ }
 /******/ ]);

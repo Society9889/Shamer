@@ -6,6 +6,10 @@
 
 .container{
 	width: 970px;
+	font-size: 18px;
+	line-height: 1.5;
+	height: 700px;
+	overflow-y: auto;
 }
 
 .blog-nav-item{
@@ -15,14 +19,31 @@
 	font-weight: 500;
 	color: #cdddeb;
 	font-size: 14px;
+	position: fixed;
 }
 
 .nav-item{
 	display: inline-block;
+	height: 90px;
 }
 
 .bell{
 	height: 64px;
+}
+
+.card {
+	margin-bottom: 20px;
+	background-color: #E1E1E8;
+	padding: 10px;
+}
+
+.card-title {
+	margin-bottom: 5px;
+	font-size: 40px;
+}
+
+.alertContainer{
+	background-image: url(../../public/img/ocean.png);
 }
 
 
