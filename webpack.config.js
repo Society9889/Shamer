@@ -22,7 +22,7 @@ module.exports = {
             { test: /bootstrap\/js\//, loader: 'imports?jQuery=jquery' },
             { test: /\.png$/, loader: 'file-loader?name=/img/[name].[ext]' },
             { test: /\.jpg$/, loader: 'file-loader' },
-            { test: /\.(woff|woff2)$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
+            { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?public/font-awesome/limit=10000&minetype=application/font-woff" },
             { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url-loader?limit=10000&minetype=application/octet-stream" },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file-loader" },
             { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url-loader?limit=10000&minetype=image/svg+xml" }

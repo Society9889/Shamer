@@ -1,5 +1,6 @@
 require('./testBoard.scss');
 require('bootstrap/dist/css/bootstrap.css');
+require('../../public/font-awesome/scss/font-awesome.scss');
 var io = require('socket.io-client');
 
 var socket;
@@ -39,6 +40,7 @@ var buildAlertComponent = React.createClass({
 			rows.push(
 				<div key={i} className="card">
 					<h2 className="card-title">Build status: {this.state.results[i]}</h2>
+					<i className="fa fa-frown-o"></i>
 					<p>Sup yo someone broke the build</p>
 				</div>
 			)
