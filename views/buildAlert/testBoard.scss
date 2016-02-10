@@ -1,7 +1,7 @@
 .blog-masthead{
 	background-color: #428bca;
 	height: 90px;
-	box-shadow: 0px 5px 5px #888888;
+	box-shadow: 0px 5px 5px rgba(136,136,136,.4);
 }
 
 .container{
@@ -33,7 +33,7 @@
 
 .card {
 	margin-bottom: 20px;
-	background-color: #E1E1E8;
+	background: rgba(225, 225, 232, .5);
 	padding: 10px;
 }
 
@@ -42,7 +42,7 @@
 	font-size: 40px;
 }
 
-.alertContainer{
+body{
 	background-image: url(../../public/img/ocean.png);
 }
 

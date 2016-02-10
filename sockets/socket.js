@@ -18,7 +18,7 @@ module.exports = function (io) {
 
 		socket.on('checkBuild', function() {
 			console.log('Checking the build');
-		/*	var promise = watcher.checkBuild();
+	/*		var promise = watcher.checkBuild();
 
 			promise.then( function(result) {
 			console.log("stuff? " + result);

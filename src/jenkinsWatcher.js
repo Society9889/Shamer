@@ -1,7 +1,7 @@
 
 var jenkinsapi = require('jenkins-api');
 
-//These need to move to a onfig file at some point
+//These need to move to a config file at some point
 var site = "";
  
 // no auth 
@@ -23,14 +23,6 @@ var jenkinsWatcher = {
 			});
 
 		});
-
-	/*	promise.then( function(result) {
-			console.log("uhhh did it work? " + result);
-			resolve(result);
-		}, function(err){
-			console.log(err);
-			reject(err);
-		}); */
 		return promise;
 	}
 
