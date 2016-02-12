@@ -12,8 +12,7 @@ var buildAlertComponent = React.createClass({
 	getInitialState: function(){
 		return{
 			count: 0, 
-			results: [],
-			test: ['Hello', 'world']
+			results: []
 		};
 	},
 
@@ -36,14 +35,22 @@ var buildAlertComponent = React.createClass({
 
 		var rows = [];
 
-		for (var i = 0; i < this.state.count; i ++){
-			rows.push(
-				<div key={i} className="card">
-					<h2 className="card-title">Build status: {this.state.results[i]}</h2>
-					<i className="fa fa-frown-o"></i>
-					<p>Sup yo someone broke the build</p>
-				</div>
-			)
+		for (var i = this.state.count-1; i >= 0; i --){
+			if(this.state.results[i] === "SUCCESS"){
+				rows.push(
+					<div key={i} className="card">
+						<h2 className="card-title">Build status: {this.state.results[i]}</h2>
+						<i className="fa fa-smile-o fa-5x success"></i>
+					</div>
+				)
+			} else {
+				rows.push(
+					<div key={i} className="card">
+						<h2 className="card-title">Build status: {this.state.results[i]}</h2>
+						<i className="fa fa-frown-o fa-5x failure"></i>
+					</div>
+				)
+			}
 		}
 
 		return (

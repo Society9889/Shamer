@@ -9,10 +9,6 @@ var React = require('react');
 
 var buildAlertComponent = React.createClass({
 
-	checkBuild: function(){
-		socket.emit('checkBuild');
-	},
-
 	render: function() {
 		return (
 			<div className="alertContainer">

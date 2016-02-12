@@ -35,12 +35,28 @@
 	margin-bottom: 20px;
 	background: rgba(225, 225, 232, .5);
 	padding: 10px;
+	height: 105px;
 }
 
 .card-title {
 	margin-bottom: 5px;
 	font-size: 40px;
+	float: left;
 }
+
+.fa-5x {
+	font-size: 5em;
+	float: right;
+}
+
+.failure {
+	color: red;
+}
+
+.success {
+	color: green;
+}
+
 
 body{
 	background-image: url(../../public/img/ocean.png);
