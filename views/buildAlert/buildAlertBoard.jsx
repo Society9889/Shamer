@@ -9,6 +9,20 @@ var React = require('react');
 
 var buildAlertComponent = React.createClass({
 
+	componentDidMount: function(){
+		socket.on('buildBroke', this.buildBroke);
+	},
+
+	checkBuild: function(){
+		socket.emit('checkBuild');
+	},
+
+	buildBroke: function() {
+		setTimeout(function() {document.getElementById('bell').className+=" bellAnimation"; } , 500);
+		//document.getElementById('shame-audio').play();
+		setTimeout(function() { document.getElementById("bell").className="bell nav-item"; }, 2100);
+	},
+
 	render: function() {
 		return (
 			<div className="alertContainer">
@@ -16,7 +30,6 @@ var buildAlertComponent = React.createClass({
 						<nav className="blog-nav">
 							<img id="bell" className="bell nav-item" src="/img/bell.png"/>
 							<h2 className="nav-item">Build Alert</h2>
-							<button  className="btn btn-primary" type="button" onClick={this.checkBuild}>Shame!</button>
 						</nav>
 					<BuildFeed sockets={socket}/>
 				</div>

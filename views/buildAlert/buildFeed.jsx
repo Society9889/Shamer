@@ -39,14 +39,14 @@ var buildAlertComponent = React.createClass({
 			if(this.state.results[i] === "SUCCESS"){
 				rows.push(
 					<div key={i} className="card">
-						<h2 className="card-title">Build status: {this.state.results[i]}</h2>
+						<h2 className="card-title">Build #: {i}</h2>
 						<i className="fa fa-smile-o fa-5x success"></i>
 					</div>
 				)
 			} else {
 				rows.push(
 					<div key={i} className="card">
-						<h2 className="card-title">Build status: {this.state.results[i]}</h2>
+						<h2 className="card-title">Build #: {i}</h2>
 						<i className="fa fa-frown-o fa-5x failure"></i>
 					</div>
 				)
