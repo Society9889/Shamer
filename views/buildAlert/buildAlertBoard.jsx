@@ -19,7 +19,7 @@ var buildAlertComponent = React.createClass({
 
 	buildBroke: function() {
 		setTimeout(function() {document.getElementById('bell').className+=" bellAnimation"; } , 500);
-		//document.getElementById('shame-audio').play();
+		document.getElementById('shame-audio').play();
 		setTimeout(function() { document.getElementById("bell").className="bell nav-item"; }, 2100);
 	},
 
@@ -28,8 +28,16 @@ var buildAlertComponent = React.createClass({
 			<div className="alertContainer">
 				<div className="blog-masthead">
 						<nav className="blog-nav">
-							<img id="bell" className="bell nav-item" src="/img/bell.png"/>
-							<h2 className="nav-item">Build Alert</h2>
+							<div className="nav-item">
+								<img id="bell" className="bell" src="/img/bell.png"/>
+							</div>
+							<div className="nav-item">
+								<h2>Build Alert</h2>
+							</div>
+							<audio className="hidden-audio" id="shame-audio" controls src="/media/shame-1.mp3" type="audio/mpeg"/>
+							<div className="nav-item">
+								<i className="fa fa-cog fa-5"></i>
+							</div>
 						</nav>
 					<BuildFeed sockets={socket}/>
 				</div>

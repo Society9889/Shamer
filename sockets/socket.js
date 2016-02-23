@@ -12,23 +12,53 @@ module.exports = function (io) {
 	io.on('connection', function (socket) {
 		socket.join(room);
 		users+=1;
-		if(lastResult !== null){
+	/*	if(lastResult !== null){
 			console.log("Hello");
+			if(lastResult.result === 'FAILURE'){
+				socket.emit("buildBroke");
+			}
 			socket.emit('buildResult', lastResult);
 		}
-	//	if(users === 1){
-	//		interval = setInterval(function(){
-				console.log("success");
-				io.to(room).emit('buildResult', 'SUCCESS');
-				lastResult = 'FAILURE';
-	//		}, 10000)
+		var promise = watcher.checkBuild();
 
-	//		failure = setInterval(function(){
-	//			console.log("success");
-				io.to(room).emit('buildResult', 'FAILURE');
-	//			io.to(room).emit('buildBroke');
-	//		}, 7000)
-	//	}
+			promise.then( function(result) {
+			console.log("stuff? " + result.number);
+				if(lastResult === null || lastResult.number !== result.number ){
+					if(result.result === 'FAILURE'){
+						socket.emit("buildBroke");
+					}
+					if(result.result === 'SUCCESS' || result.result === 'FAILURE'){
+						io.to(room).emit('buildResult', result);
+						lastResult = result;
+					}
+				}
+			}, function(err){
+				console.log("hello? " + err);
+		});
+
+		if(users === 1){
+			interval = setInterval(function(){
+				console.log("Checking the build");
+			var promise = watcher.checkBuild();
+
+				promise.then( function(result) {
+				console.log("stuff? " + result.number);
+					if(lastResult.number !== result.number){
+						if(result.result === 'FAILURE'){
+							socket.emit("buildBroke");
+						}
+						if(result.result === 'SUCCESS' || result.result === 'FAILURE'){
+							io.to(room).emit('buildResult', result);
+							lastResult = result;
+						}
+					}
+				}, function(err){
+					console.log("hello? " + err);
+			});
+
+			}, 600000) 
+		}*/
+		
 		console.log("Someone new?");
 
 		socket.on('disconnect', function(){

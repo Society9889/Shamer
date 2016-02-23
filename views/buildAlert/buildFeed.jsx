@@ -28,7 +28,6 @@ var buildAlertComponent = React.createClass({
 		//	this.setState({results: array});
 		this.setState({results: this.state.results.concat([data])});
 		this.setState({count: this.state.count+1});
-		console.log(this.state);
 	},
 
 	render: function() {
@@ -36,17 +35,17 @@ var buildAlertComponent = React.createClass({
 		var rows = [];
 
 		for (var i = this.state.count-1; i >= 0; i --){
-			if(this.state.results[i] === "SUCCESS"){
+			if(this.state.results[i].result === "SUCCESS"){
 				rows.push(
 					<div key={i} className="card">
-						<h2 className="card-title">Build #: {i}</h2>
+						<h2 className="card-title">Build #{this.state.results[i].number}</h2>
 						<i className="fa fa-smile-o fa-5x success"></i>
 					</div>
 				)
 			} else {
 				rows.push(
 					<div key={i} className="card">
-						<h2 className="card-title">Build #: {i}</h2>
+						<h2 className="card-title">Build #{this.state.results[i].number}</h2>
 						<i className="fa fa-frown-o fa-5x failure"></i>
 					</div>
 				)
