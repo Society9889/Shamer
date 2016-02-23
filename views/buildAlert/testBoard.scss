@@ -26,9 +26,20 @@
 	position: fixed;
 }
 
+.setting-button{
+	float: right;
+	height: 90px;
+	margin-right: 20px;
+	background-color: transparent;
+	border: none;
+}
+
+.setting-button:hover{
+	background-color: rgb(77, 149, 210);
+}
+
 .nav-item{
 	display: inline-block;
-	height: 90px;
 }
 
 .bell{
@@ -61,6 +72,9 @@
 	color: green;
 }
 
+.white {
+	color: rgb(235,235,235);
+}
 
 body{
 	background-image: url(../../public/img/ocean.png);

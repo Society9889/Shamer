@@ -25,7 +25,11 @@ module.exports = {
             { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?public/font-awesome/limit=10000&minetype=application/font-woff" },
             { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url-loader?limit=10000&minetype=application/octet-stream" },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file-loader" },
-            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url-loader?limit=10000&minetype=image/svg+xml" }
+            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url-loader?limit=10000&minetype=image/svg+xml" },
+            {
+                test: /[\/\\]node_modules[\/\\]some-module[\/\\]index\.js$/,
+                loader: "imports?this=>window"
+            }
 
         ],
 	},
@@ -36,5 +40,13 @@ module.exports = {
         }
 
     },
+
     devtool: 'sourcemap',
+    plugins: [
+        //the magic that this provides is unreal
+        new webpack.ProvidePlugin({
+            $: path.join(root, "/bower_components/jquery/dist/jquery.js"),
+            jQuery: path.join(root, "/bower_components/jquery/dist/jquery.js")
+        })
+    ]
 };
