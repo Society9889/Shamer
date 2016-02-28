@@ -75,6 +75,11 @@ module.exports = function (io) {
 			socket.broadcast.emit('startShame', "beep");
 		});
 
+		socket.on('GetSettings', function(){
+			console.log('loading the settings');
+			
+		})
+
 		socket.on('checkBuild', function() {
 	/*		var promise = watcher.checkBuild();
 

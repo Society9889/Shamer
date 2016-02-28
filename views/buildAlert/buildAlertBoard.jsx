@@ -5,6 +5,7 @@ var io = require('socket.io-client');
 var socket = io.connect();
 
 var BuildFeed = require('./buildFeed.jsx');
+var Settings = require('./settings.jsx');
 
 var React = require('react');
 
@@ -33,31 +34,12 @@ var buildAlertComponent = React.createClass({
 								<img id="bell" className="bell" src="/img/bell.png"/>
 							</div>
 							<div className="nav-item">
-								<h2>Build Alert</h2>
+								<img className="logo" src="/img/Logo.png"/>
 							</div>
 							<audio className="hidden-audio" id="shame-audio" controls src="/media/shame-1.mp3" type="audio/mpeg"/>
-							<button className="setting-button btn nav-item" data-toggle="modal" data-target="#myModal">
-								<i className="fa fa-cog fa-5x white"></i>
-							</button>
+							<Settings/>
 						</nav>
 					<BuildFeed sockets={socket}/>
-				</div>
-				<div className="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-					<div className="modal-dialog" role="document">
-						<div className="modal-content">
-							<div className="modal-header">
-								<button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 className="modal-title" id="myModalLabel">Modal title</h4>
-							</div>
-							<div className="modal-body">
-								settings menu
-							</div>
-							<div className="modal-footer">
-								<button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
-								<button type="button" className="btn btn-primary">Save</button>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		)
