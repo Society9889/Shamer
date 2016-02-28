@@ -1,21 +1,60 @@
 require('bootstrap/dist/css/bootstrap.css');
 require('bootstrap/dist/js/bootstrap.js');
 require('./testBoard.scss');
+
+var io = require('socket.io-client');
+
+var socket;
+
+var player;
+
 var React = require('react');
 
 var settingsComponent = React.createClass({
 
-	updateTime: function (event) {
-		$(event.target).closest('.row').find('input').val(event.target.value);
-		this.props.changeCallback();
+	getInitialState: function(){
+		return{
+			options: []
+		}
 	},
 
-	playAudio: function() {
-		var player = new Audio("/media/shame-1.mp3");
+	componentDidMount: function() {
+		socket = this.props.sockets;
+		socket.emit("GetSettings");
+		socket.on("Settings", this.loadSettings);
+	},
+
+	updateTime: function (event) {
+		$(event.target).closest('.row').find('input').val(event.target.value);
+	},
+
+	playAudio: function (sound) {
+		console.log(sound);
+		player = new Audio("/media/"+sound);
 		player.play();
 	},
 
+	loadSettings: function (settings){
+		this.setState({options: settings});
+		console.log(this.state);
+	},
+
 	render: function() {
+
+		var rows = [];
+		var me =this;
+
+		this.state.options.forEach(function(option) {
+			rows.push(
+			<tr key={option}>
+				<td>{option}</td>
+				<td>
+					<button className="btn btn-primary" value={option} onClick={me.playAudio.bind(me, option)}>Play</button>
+				</td>
+			</tr>
+			);
+		});
+
 		return (
 			<div className="nav-item-right">
 				<button className="setting-button btn" data-toggle="modal" data-target="#myModal">
@@ -40,10 +79,7 @@ var settingsComponent = React.createClass({
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td>Shame</td>
-													<td><button className="btn btn-primary" onClick={this.playAudio}>Play</button></td>
-												</tr>
+											{rows}
 											</tbody>
 										</table>
 									</div>

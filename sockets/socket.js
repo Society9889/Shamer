@@ -1,4 +1,4 @@
-
+var fs = require('fs');
 var watcher = require('../src/jenkinsWatcher');
 
 var interval,
@@ -77,7 +77,22 @@ module.exports = function (io) {
 
 		socket.on('GetSettings', function(){
 			console.log('loading the settings');
-			
+
+			var results = [];
+			var dir = "public/media";
+
+			fs.readdirSync(dir).forEach(function(file) {
+
+				file = dir+'/'+file;
+				var stat = fs.statSync(file);
+
+				if (stat && stat.isDirectory()) {
+					results = results.concat(_getAllFilesFromFolder(file));
+				} else results.push(file.replace(dir+'/', ''));
+
+			});
+
+			socket.emit('Settings', results);
 		})
 
 		socket.on('checkBuild', function() {

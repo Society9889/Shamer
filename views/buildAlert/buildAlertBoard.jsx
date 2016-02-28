@@ -37,7 +37,7 @@ var buildAlertComponent = React.createClass({
 								<img className="logo" src="/img/Logo.png"/>
 							</div>
 							<audio className="hidden-audio" id="shame-audio" controls src="/media/shame-1.mp3" type="audio/mpeg"/>
-							<Settings/>
+							<Settings sockets={socket}/>
 						</nav>
 					<BuildFeed sockets={socket}/>
 				</div>
