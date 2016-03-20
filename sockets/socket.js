@@ -2,9 +2,11 @@ var fs = require('fs');
 var watcher = require('../src/jenkinsWatcher');
 
 var interval,
-	failure,
 	users = 0,
 	room = "watcherRoom",
+	soundsOnServer = [],
+	sounds = [],
+	timer = 5,
 	lastResult = null;
 
 module.exports = function (io) {
@@ -12,20 +14,19 @@ module.exports = function (io) {
 	io.on('connection', function (socket) {
 		socket.join(room);
 		users+=1;
-	/*	if(lastResult !== null){
-			console.log("Hello");
-			if(lastResult.result === 'FAILURE'){
-				socket.emit("buildBroke");
-			}
-			socket.emit('buildResult', lastResult);
-		}
-		var promise = watcher.checkBuild();
 
+		/**
+		* CheckBuild will set up a promise and use that to get the
+		*  status of the build from an async call.
+		*/
+		var checkBuild = function(){
+			var promise = watcher.checkBuild();
+			console.log("Checking the build");
 			promise.then( function(result) {
-			console.log("stuff? " + result.number);
+			console.log("Build: " + result.number);
 				if(lastResult === null || lastResult.number !== result.number ){
 					if(result.result === 'FAILURE'){
-						socket.emit("buildBroke");
+						getRandomSound();
 					}
 					if(result.result === 'SUCCESS' || result.result === 'FAILURE'){
 						io.to(room).emit('buildResult', result);
@@ -33,51 +34,23 @@ module.exports = function (io) {
 					}
 				}
 			}, function(err){
-				console.log("hello? " + err);
-		});
-
-		if(users === 1){
-			interval = setInterval(function(){
-				console.log("Checking the build");
-			var promise = watcher.checkBuild();
-
-				promise.then( function(result) {
-				console.log("stuff? " + result.number);
-					if(lastResult.number !== result.number){
-						if(result.result === 'FAILURE'){
-							socket.emit("buildBroke");
-						}
-						if(result.result === 'SUCCESS' || result.result === 'FAILURE'){
-							io.to(room).emit('buildResult', result);
-							lastResult = result;
-						}
-					}
-				}, function(err){
-					console.log("hello? " + err);
+				console.log("Error " + err);
 			});
+		}
 
-			}, 600000) 
-		}*/
-		
-		console.log("Someone new?");
-
-		socket.on('disconnect', function(){
-			console.log("Bye Bye");
-			users-=1;
-			if(users <=0 ){
-				clearInterval(interval);
-				clearInterval(failure);
+		/**
+		* Gets a random sound from the list of enabled sounds and sends it to the
+		* frontend.
+		*/
+		var getRandomSound = function(){
+			if(sounds.length > 0)
+			{
+				var sound = sounds[Math.floor(Math.random()*sounds.length)];
+				socket.emit("buildBroke", sound);
 			}
-		});
+		}
 
-		socket.on('SHAME', function() {
-			console.log('someone got shamed');
-			socket.broadcast.emit('startShame', "beep");
-		});
-
-		socket.on('GetSettings', function(){
-			console.log('loading the settings');
-
+		var loadSettings = function() {
 			var results = [];
 			var dir = "public/media";
 
@@ -91,20 +64,70 @@ module.exports = function (io) {
 				} else results.push(file.replace(dir+'/', ''));
 
 			});
+			results.forEach(function(result){
+				var option = {
+					sound: result,
+					enabled: true
+				}
+				soundsOnServer.push(option);
+			});
+			sounds = results;
+		}
 
-			socket.emit('Settings', results);
-		})
+		if(lastResult !== null){
+		 	if(lastResult.result === 'FAILURE'){
+		 		getRandomSound();
+		 	}
+		 	socket.emit('buildResult', lastResult);
+		}
 
-		socket.on('checkBuild', function() {
-	/*		var promise = watcher.checkBuild();
+		if(users === 1){
+		//	interval = setInterval(checkBuild, timer * 60000 );
+			if(sounds.length === 0){
+				loadSettings();
+			}
+		}
 
-			promise.then( function(result) {
-			console.log("stuff? " + result);
-				socket.emit('buildResult', result);
-			}, function(err){
-				console.log("hello? " + err);
-			}); */
-			//socket.emit('buildResult', "SUCCESS");
+		//checkBuild();
+
+		//getRandomSound();
+		console.log("Someone new?");
+
+		socket.on('disconnect', function(){
+			console.log("Bye Bye");
+			users-=1;
+			if(users <=0 ){
+				clearInterval(interval);
+			}
+		});
+
+		socket.on('SHAME', function() {
+			console.log('someone got shamed');
+			socket.broadcast.emit('startShame', "beep");
+		});
+
+		socket.on('GetSettings', function(){
+			console.log('loading the settings');
+			socket.emit('Settings', soundsOnServer, timer);
+		});
+
+		socket.on('SaveSettings', function(settings){
+			var newSounds = [];
+
+			settings.options.forEach(function(option){
+				if(option.enabled){
+					newSounds.push
+				}
+			});
+			sounds = newSounds;
+			soundsOnServer = settings.options;
+			if(settings.pingTime != timer)
+			{
+				timer = settings.pingTime;
+				// clearInterval(interval);
+				// interval = setInterval(checkBuild, (timer * 60000) );
+			}
+			io.to(room).emit('Settings', soundsOnServer, timer);
 		});
 
 	});

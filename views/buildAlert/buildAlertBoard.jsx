@@ -6,6 +6,7 @@ var socket = io.connect();
 
 var BuildFeed = require('./buildFeed.jsx');
 var Settings = require('./settings.jsx');
+var Player = new Audio("/media/shame-1.mp3");
 
 var React = require('react');
 
@@ -19,10 +20,11 @@ var buildAlertComponent = React.createClass({
 		socket.emit('checkBuild');
 	},
 
-	buildBroke: function() {
+	buildBroke: function(sound) {
 		setTimeout(function() {document.getElementById('bell').className+=" bellAnimation"; } , 500);
-		document.getElementById('shame-audio').play();
-		setTimeout(function() { document.getElementById("bell").className="bell nav-item"; }, 2100);
+		Player = new Audio("/media/" + sound);
+		Player.play();
+		setTimeout(function() { document.getElementById("bell").className="bell"; }, 2100);
 	},
 
 	render: function() {
@@ -36,7 +38,6 @@ var buildAlertComponent = React.createClass({
 							<div className="nav-item">
 								<img className="logo" src="/img/Logo.png"/>
 							</div>
-							<audio className="hidden-audio" id="shame-audio" controls src="/media/shame-1.mp3" type="audio/mpeg"/>
 							<Settings sockets={socket}/>
 						</nav>
 					<BuildFeed sockets={socket}/>

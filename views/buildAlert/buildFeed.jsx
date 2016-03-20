@@ -22,12 +22,11 @@ var buildAlertComponent = React.createClass({
 	},
 
 	updateList: function (data){
-		console.log(data);
 		var array = [];
 		array = array.push(data);
-		//	this.setState({results: array});
 		this.setState({results: this.state.results.concat([data])});
 		this.setState({count: this.state.count+1});
+		console.log(this.state.results);
 	},
 
 	render: function() {
