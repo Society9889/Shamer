@@ -84,7 +84,7 @@ var settingsComponent = React.createClass({
 									<div className="row setting-row">
 										<h2>Sounds</h2>
 										<p>Check the sounds you wish to enable, press play for a preview</p>
-										<table className="table table-hover">
+										<table className="table table-hover remove-margin">
 											<thead>
 												<tr>
 													<th>Toggle</th>
@@ -92,10 +92,15 @@ var settingsComponent = React.createClass({
 													<th>Preview</th>
 												</tr>
 											</thead>
-											<tbody>
-											{rows}
-											</tbody>
+											
 										</table>
+										<div className="setting-table-body">
+											<table className="table table-hover">
+												<tbody>
+													{rows}
+												</tbody>
+											</table>
+										</div>
 									</div>
 									<h2>Timer</h2>
 									<div className="row setting-row">

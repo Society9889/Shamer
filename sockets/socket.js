@@ -5,6 +5,7 @@ var lunchScrapper = require('../src/lunchScrapper');
 var interval,
 	users = 0,
 	room = "watcherRoom",
+	menus = [],
 	soundsOnServer = [],
 	sounds = [],
 	timer = 5,
@@ -79,6 +80,7 @@ module.exports = function (io) {
 			console.log("Getting the menu for this week");
 			var promise = lunchScrapper.getLunchMenu();
 			promise.then(function(result){
+				menus = result;
 				socket.emit("LoadMenus", result);
 			}, function(err){
 				console.log("Error" + err);
@@ -142,7 +144,11 @@ module.exports = function (io) {
 		});
 
 		socket.on('GetMenus', function(){
-			loadMenus();
+			if(menus.length > 0){
+				socket.emit("LoadMenus", menus);
+			} else {
+				loadMenus();
+			}
 		});
 
 	});

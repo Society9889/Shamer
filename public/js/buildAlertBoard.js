@@ -19744,7 +19744,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".blog-masthead {\n  background-color: #428bca;\n  height: 90px;\n  box-shadow: 0px 5px 5px rgba(136, 136, 136, 0.4); }\n\n.hidden-audio {\n  display: none; }\n\n.container {\n  width: 100% !important;\n  font-size: 18px;\n  line-height: 1.5;\n  height: 700px;\n  overflow-y: auto;\n  margin-top: 30px; }\n\n.blog-nav-item {\n  position: relative;\n  display: inline-block;\n  padding: 10px 10px 10px 10px;\n  font-weight: 500;\n  color: #cdddeb;\n  font-size: 14px;\n  position: fixed; }\n\n.setting-button {\n  background-color: transparent;\n  border: none; }\n\n.setting-button:hover {\n  background-color: #4d95d2; }\n\n.nav-item {\n  display: inline-block;\n  padding-top: 13px;\n  padding-right: 10px; }\n\n.nav-item-right {\n  float: right;\n  display: inline-block;\n  height: 90px;\n  margin-right: 20px;\n  margin-top: 3px; }\n\n.setting-row {\n  margin: 5px !important; }\n\n.bell {\n  height: 64px; }\n\n.card {\n  margin-bottom: 20px;\n  background: rgba(225, 225, 232, 0.5);\n  padding: 10px;\n  height: 105px; }\n\n.card-title {\n  margin-bottom: 5px;\n  font-size: 40px;\n  float: left; }\n\n.fa-5x {\n  font-size: 5em;\n  float: right; }\n\n.failure {\n  color: red; }\n\n.success {\n  color: green; }\n\n.white {\n  color: #ebebeb; }\n\n.logo {\n  height: 45px; }\n\n.lunchHeight {\n  height: 300px;\n  background: rgba(225, 225, 232, 0.5); }\n\n.dayLabel {\n  text-align: center; }\n\n.menu {\n  margin-left: 20px; }\n\n.menuItem {\n  padding: 5px 3px 5px 3px; }\n\n.menuArrow {\n  top: 85% !important; }\n\nbody {\n  background-image: url(" + __webpack_require__(163) + "); }\n\n.bellAnimation {\n  -webkit-animation: spin 1s linear;\n  -moz-animation: spin 1s linear;\n  animation: spin 1s linear;\n  transform-origin: 50% 0%; }\n\n@-moz-keyframes spin {\n  33% {\n    -moz-transform: rotate(45deg); }\n  66% {\n    -moz-transform: rotate(-45deg); }\n  100% {\n    -moz-transform: rotate(0deg); } }\n\n@-webkit-keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg); } }\n\n@keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); } }\n", ""]);
+	exports.push([module.id, ".blog-masthead {\n  background-color: #428bca;\n  height: 90px;\n  box-shadow: 0px 5px 5px rgba(136, 136, 136, 0.4); }\n\n.hidden-audio {\n  display: none; }\n\n.container {\n  width: 100% !important;\n  font-size: 18px;\n  line-height: 1.5;\n  height: 700px;\n  overflow-y: auto;\n  margin-top: 30px; }\n\n.blog-nav-item {\n  position: relative;\n  display: inline-block;\n  padding: 10px 10px 10px 10px;\n  font-weight: 500;\n  color: #cdddeb;\n  font-size: 14px;\n  position: fixed; }\n\n.setting-button {\n  background-color: transparent;\n  border: none; }\n\n.setting-button:hover {\n  background-color: #4d95d2; }\n\n.nav-item {\n  display: inline-block;\n  padding-top: 13px;\n  padding-right: 10px; }\n\n.nav-item-right {\n  float: right;\n  display: inline-block;\n  height: 90px;\n  margin-right: 20px;\n  margin-top: 3px; }\n\n.setting-row {\n  margin: 5px !important; }\n\n.bell {\n  height: 64px; }\n\n.card {\n  margin-bottom: 20px;\n  background: rgba(225, 225, 232, 0.5);\n  padding: 10px;\n  height: 105px; }\n\n.card-title {\n  margin-bottom: 5px;\n  font-size: 40px;\n  float: left; }\n\n.fa-5x {\n  font-size: 5em;\n  float: right; }\n\n.failure {\n  color: red; }\n\n.success {\n  color: green; }\n\n.white {\n  color: #ebebeb; }\n\n.logo {\n  height: 45px; }\n\n.lunchHeight {\n  height: 300px;\n  background: rgba(225, 225, 232, 0.5); }\n\n.dayLabel {\n  text-align: center; }\n\n.menu {\n  margin-left: 20px; }\n\n.menuItem {\n  padding: 5px 3px 5px 3px; }\n\n.menuArrow {\n  top: 85% !important; }\n\nbody {\n  background-image: url(" + __webpack_require__(163) + "); }\n\n.setting-table-body {\n  height: 300px;\n  overflow-y: auto; }\n\n.bellAnimation {\n  -webkit-animation: spin 1s linear;\n  -moz-animation: spin 1s linear;\n  animation: spin 1s linear;\n  transform-origin: 50% 0%; }\n\n.remove-margin {\n  margin-bottom: 0px !important; }\n\n@-moz-keyframes spin {\n  33% {\n    -moz-transform: rotate(45deg); }\n  66% {\n    -moz-transform: rotate(-45deg); }\n  100% {\n    -moz-transform: rotate(0deg); } }\n\n@-webkit-keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg); } }\n\n@keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); } }\n", ""]);
 	
 	// exports
 
@@ -39499,16 +39499,21 @@
 										React.createElement("div", {className: "row setting-row"}, 
 											React.createElement("h2", null, "Sounds"), 
 											React.createElement("p", null, "Check the sounds you wish to enable, press play for a preview"), 
-											React.createElement("table", {className: "table table-hover"}, 
+											React.createElement("table", {className: "table table-hover remove-margin"}, 
 												React.createElement("thead", null, 
 													React.createElement("tr", null, 
 														React.createElement("th", null, "Toggle"), 
 														React.createElement("th", null, "Sound"), 
 														React.createElement("th", null, "Preview")
 													)
-												), 
-												React.createElement("tbody", null, 
-												rows
+												)
+												
+											), 
+											React.createElement("div", {className: "setting-table-body"}, 
+												React.createElement("table", {className: "table table-hover"}, 
+													React.createElement("tbody", null, 
+														rows
+													)
 												)
 											)
 										), 

@@ -117,11 +117,20 @@ body{
 	background-image: url(../../public/img/ocean.png);
 }
 
+.setting-table-body {
+	height: 300px;
+	overflow-y: auto;
+}
+
 .bellAnimation{
 	-webkit-animation:spin 1s linear;
 	-moz-animation:spin 1s linear;
 	animation:spin 1s linear;
 	transform-origin: 50% 0%;
+}
+
+.remove-margin {
+	margin-bottom: 0px !important;
 }
 
 @-moz-keyframes spin {
