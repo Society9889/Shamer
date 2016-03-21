@@ -1,18 +1,17 @@
 
-var jenkinsapi = require('jenkins-api');
-
-//These need to move to a config file at some point
-var site = "";
+var jenkinsapi = require('jenkins-api'),
+	config = require('../config.js');
  
 // no auth 
-var jenkins = jenkinsapi.init(site);
+var jenkins = jenkinsapi.init(config.jenkinsServer);
 
 var jenkinsWatcher = {
-
+	
 	checkBuild : function() {
+		console.log(config.jenkinsServer + ' ' + config.project);
 		var promise = new Promise(function(resolve, reject){
 
-			jenkins.last_build_info('', function(err, data) {
+			jenkins.last_build_info(config.project, function(err, data) {
 			  if (err){ 
 			  	console.log('Error checking build');
 			  	reject(Error("oops"));

@@ -19,12 +19,12 @@ var buildAlertComponent = React.createClass({
 	componentDidMount: function(){
 		socket = this.props.sockets;
 		socket.on('buildResult', this.updateList);
-		var test = {
-			result: "SUCCESS",
-			number: 666
-		};
-		this.setState({results: this.state.results.concat([test])});
-		this.setState({count: this.state.count+1});
+		// var test = {
+		// 	result: "SUCCESS",
+		// 	number: 666
+		// };
+		// this.setState({results: this.state.results.concat([test])});
+		// this.setState({count: this.state.count+1});
 	},
 
 	updateList: function (data){

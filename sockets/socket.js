@@ -95,13 +95,13 @@ module.exports = function (io) {
 		}
 
 		if(users === 1){
-		//	interval = setInterval(checkBuild, timer * 60000 );
+			interval = setInterval(checkBuild, timer * 60000 );
 			if(sounds.length === 0){
 				loadSettings();
 			}
 		}
 
-		//checkBuild();
+		checkBuild();
 
 		//getRandomSound();
 		console.log("Someone new?");
