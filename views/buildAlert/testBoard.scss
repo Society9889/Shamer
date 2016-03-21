@@ -9,7 +9,7 @@
 }
 
 .container{
-	width: 970px;
+	width: 100% !important;
 	font-size: 18px;
 	line-height: 1.5;
 	height: 700px;
@@ -90,6 +90,27 @@
 
 .logo {
 	height: 45px;
+}
+
+.lunchHeight {
+	height: 300px;
+	background: rgba(225, 225, 232, .5);
+}
+
+.dayLabel {
+	text-align: center;
+}
+
+.menu {
+	margin-left: 20px;
+}
+
+.menuItem {
+	padding: 5px 3px 5px 3px;
+}
+
+.menuArrow {
+	top: 85% !important;
 }
 
 body{

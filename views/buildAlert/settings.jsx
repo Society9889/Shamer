@@ -35,7 +35,6 @@ var settingsComponent = React.createClass({
 	loadSettings: function (settings, timer){
 		this.setState({options: settings});
 		this.setState({pingTime: timer});
-		console.log(this.state);
 	},
 
 	onChangeHandler: function (event){

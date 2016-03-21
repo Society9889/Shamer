@@ -5,6 +5,7 @@ var io = require('socket.io-client');
 var socket = io.connect();
 
 var BuildFeed = require('./buildFeed.jsx');
+var LunchMenu = require('./lunchMenu.jsx');
 var Settings = require('./settings.jsx');
 var Player = new Audio("/media/shame-1.mp3");
 
@@ -40,7 +41,14 @@ var buildAlertComponent = React.createClass({
 							</div>
 							<Settings sockets={socket}/>
 						</nav>
-					<BuildFeed sockets={socket}/>
+					<div className ="container row">
+						<div className="col-md-5">
+							<LunchMenu sockets={socket}/>
+						</div>
+						<div className="col-md-7">
+							<BuildFeed sockets={socket}/>
+						</div>
+					</div>
 				</div>
 			</div>
 		)

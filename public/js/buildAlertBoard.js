@@ -19656,7 +19656,8 @@
 	var socket = io.connect();
 	
 	var BuildFeed = __webpack_require__(221);
-	var Settings = __webpack_require__(230);
+	var LunchMenu = __webpack_require__(230);
+	var Settings = __webpack_require__(231);
 	var Player = new Audio("/media/shame-1.mp3");
 	
 	var React = __webpack_require__(1);
@@ -19691,7 +19692,14 @@
 								), 
 								React.createElement(Settings, {sockets: socket})
 							), 
-						React.createElement(BuildFeed, {sockets: socket})
+						React.createElement("div", {className: "container row"}, 
+							React.createElement("div", {className: "col-md-5"}, 
+								React.createElement(LunchMenu, {sockets: socket})
+							), 
+							React.createElement("div", {className: "col-md-7"}, 
+								React.createElement(BuildFeed, {sockets: socket})
+							)
+						)
 					)
 				)
 			)
@@ -19736,7 +19744,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".blog-masthead {\n  background-color: #428bca;\n  height: 90px;\n  box-shadow: 0px 5px 5px rgba(136, 136, 136, 0.4); }\n\n.hidden-audio {\n  display: none; }\n\n.container {\n  width: 970px;\n  font-size: 18px;\n  line-height: 1.5;\n  height: 700px;\n  overflow-y: auto;\n  margin-top: 30px; }\n\n.blog-nav-item {\n  position: relative;\n  display: inline-block;\n  padding: 10px 10px 10px 10px;\n  font-weight: 500;\n  color: #cdddeb;\n  font-size: 14px;\n  position: fixed; }\n\n.setting-button {\n  background-color: transparent;\n  border: none; }\n\n.setting-button:hover {\n  background-color: #4d95d2; }\n\n.nav-item {\n  display: inline-block;\n  padding-top: 13px;\n  padding-right: 10px; }\n\n.nav-item-right {\n  float: right;\n  display: inline-block;\n  height: 90px;\n  margin-right: 20px;\n  margin-top: 3px; }\n\n.setting-row {\n  margin: 5px !important; }\n\n.bell {\n  height: 64px; }\n\n.card {\n  margin-bottom: 20px;\n  background: rgba(225, 225, 232, 0.5);\n  padding: 10px;\n  height: 105px; }\n\n.card-title {\n  margin-bottom: 5px;\n  font-size: 40px;\n  float: left; }\n\n.fa-5x {\n  font-size: 5em;\n  float: right; }\n\n.failure {\n  color: red; }\n\n.success {\n  color: green; }\n\n.white {\n  color: #ebebeb; }\n\n.logo {\n  height: 45px; }\n\nbody {\n  background-image: url(" + __webpack_require__(163) + "); }\n\n.bellAnimation {\n  -webkit-animation: spin 1s linear;\n  -moz-animation: spin 1s linear;\n  animation: spin 1s linear;\n  transform-origin: 50% 0%; }\n\n@-moz-keyframes spin {\n  33% {\n    -moz-transform: rotate(45deg); }\n  66% {\n    -moz-transform: rotate(-45deg); }\n  100% {\n    -moz-transform: rotate(0deg); } }\n\n@-webkit-keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg); } }\n\n@keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); } }\n", ""]);
+	exports.push([module.id, ".blog-masthead {\n  background-color: #428bca;\n  height: 90px;\n  box-shadow: 0px 5px 5px rgba(136, 136, 136, 0.4); }\n\n.hidden-audio {\n  display: none; }\n\n.container {\n  width: 100% !important;\n  font-size: 18px;\n  line-height: 1.5;\n  height: 700px;\n  overflow-y: auto;\n  margin-top: 30px; }\n\n.blog-nav-item {\n  position: relative;\n  display: inline-block;\n  padding: 10px 10px 10px 10px;\n  font-weight: 500;\n  color: #cdddeb;\n  font-size: 14px;\n  position: fixed; }\n\n.setting-button {\n  background-color: transparent;\n  border: none; }\n\n.setting-button:hover {\n  background-color: #4d95d2; }\n\n.nav-item {\n  display: inline-block;\n  padding-top: 13px;\n  padding-right: 10px; }\n\n.nav-item-right {\n  float: right;\n  display: inline-block;\n  height: 90px;\n  margin-right: 20px;\n  margin-top: 3px; }\n\n.setting-row {\n  margin: 5px !important; }\n\n.bell {\n  height: 64px; }\n\n.card {\n  margin-bottom: 20px;\n  background: rgba(225, 225, 232, 0.5);\n  padding: 10px;\n  height: 105px; }\n\n.card-title {\n  margin-bottom: 5px;\n  font-size: 40px;\n  float: left; }\n\n.fa-5x {\n  font-size: 5em;\n  float: right; }\n\n.failure {\n  color: red; }\n\n.success {\n  color: green; }\n\n.white {\n  color: #ebebeb; }\n\n.logo {\n  height: 45px; }\n\n.lunchHeight {\n  height: 300px;\n  background: rgba(225, 225, 232, 0.5); }\n\n.dayLabel {\n  text-align: center; }\n\n.menu {\n  margin-left: 20px; }\n\n.menuItem {\n  padding: 5px 3px 5px 3px; }\n\n.menuArrow {\n  top: 85% !important; }\n\nbody {\n  background-image: url(" + __webpack_require__(163) + "); }\n\n.bellAnimation {\n  -webkit-animation: spin 1s linear;\n  -moz-animation: spin 1s linear;\n  animation: spin 1s linear;\n  transform-origin: 50% 0%; }\n\n@-moz-keyframes spin {\n  33% {\n    -moz-transform: rotate(45deg); }\n  66% {\n    -moz-transform: rotate(-45deg); }\n  100% {\n    -moz-transform: rotate(0deg); } }\n\n@-webkit-keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg); } }\n\n@keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); } }\n", ""]);
 	
 	// exports
 
@@ -39158,6 +39166,12 @@
 		componentDidMount: function(){
 			socket = this.props.sockets;
 			socket.on('buildResult', this.updateList);
+			var test = {
+				result: "SUCCESS",
+				number: 666
+			};
+			this.setState({results: this.state.results.concat([test])});
+			this.setState({count: this.state.count+1});
 		},
 	
 		updateList: function (data){
@@ -39191,7 +39205,7 @@
 			}
 	
 			return (
-				React.createElement("div", {className: "container"}, 
+				React.createElement("div", null, 
 					rows
 				)
 			)
@@ -39281,6 +39295,124 @@
 /* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
+	__webpack_require__(165);
+	__webpack_require__(172);
+	__webpack_require__(160);
+	var io = __webpack_require__(174);
+	var socket;
+	var React = __webpack_require__(1);
+	
+	var lunchMenuComponent = React.createClass({displayName: "lunchMenuComponent",
+	
+		getInitialState: function(){
+			return{
+				menus: []
+			};
+		},
+	
+		componentDidMount: function() {
+			socket = this.props.sockets;
+			socket.emit("GetMenus");
+			socket.on("LoadMenus", this.loadMenus);
+		},
+	
+		loadMenus: function(menus){
+			this.setState({menus: menus});
+			console.log(this.state);
+		},
+	
+		render: function() {
+			var items = [];
+	
+			this.state.menus.forEach(function(menu){
+				var cls = "item";
+				if(menu[0] == 'Monday'){
+					cls = "item active";
+				}
+				items.push(
+					React.createElement("div", {key: menu[0], className: cls}, 
+						React.createElement("div", {className: "dayLabel"}, 
+					    	React.createElement("h1", null, menu[0])
+					    ), 
+					    React.createElement("table", {className: "menu"}, 
+					    	React.createElement("tbody", null, 
+					    		React.createElement("tr", null, 
+					    			React.createElement("td", {className: "menuItem"}, 
+					    				menu[1]
+					    			), 
+					    			React.createElement("td", null, 
+					    				menu[2]
+					    			)
+					    		), 
+					    		React.createElement("tr", null, 
+					    			React.createElement("td", {className: "menuItem"}, 
+					    				menu[3]
+					    			), 
+					    			React.createElement("td", null, 
+					    				menu[4]
+					    			)
+					    		), 
+					    		React.createElement("tr", null, 
+					    			React.createElement("td", {className: "menuItem"}, 
+					    				menu[5]
+					    			), 
+					    			React.createElement("td", null, 
+					    				menu[6]
+					    			)
+					    		), 
+					    		React.createElement("tr", null, 
+					    			React.createElement("td", {className: "menuItem"}, 
+					    				menu[7]
+					    			), 
+					    			React.createElement("td", null, 
+					    				menu[8]
+					    			)
+					    		), 
+					    		React.createElement("tr", null, 
+					    			React.createElement("td", {className: "menuItem"}, 
+					    				menu[9]
+					    			), 
+					    			React.createElement("td", null, 
+					    				menu[10]
+					    			)
+					    		)
+					    	)
+					    )
+					)
+				)
+			});
+			return (
+				React.createElement("div", {id: "carousel-lunch", className: "carousel slide lunchHeight", "data-ride": "carousel"}, 
+				  React.createElement("ol", {className: "carousel-indicators"}, 
+				    React.createElement("li", {"data-target": "#carousel-lunch", "data-slide-to": "0", className: "active"}), 
+				    React.createElement("li", {"data-target": "#carousel-lunch", "data-slide-to": "1"}), 
+				    React.createElement("li", {"data-target": "#carousel-lunch", "data-slide-to": "2"}), 
+				    React.createElement("li", {"data-target": "#carousel-lunch", "data-slide-to": "3"}), 
+				    React.createElement("li", {"data-target": "#carousel-lunch", "data-slide-to": "4"})
+				  ), 
+	
+				  React.createElement("div", {className: "carousel-inner", role: "listbox"}, 
+				    items
+				  ), 
+	
+				  React.createElement("a", {className: "left carousel-control", href: "#carousel-lunch", role: "button", "data-slide": "prev"}, 
+				    React.createElement("span", {className: "glyphicon glyphicon-chevron-left menuArrow", "aria-hidden": "true"}), 
+				    React.createElement("span", {className: "sr-only"}, "Previous")
+				  ), 
+				  React.createElement("a", {className: "right carousel-control", href: "#carousel-lunch", role: "button", "data-slide": "next"}, 
+				    React.createElement("span", {className: "glyphicon glyphicon-chevron-right menuArrow", "aria-hidden": "true"}), 
+				    React.createElement("span", {className: "sr-only"}, "Next")
+				  )
+				)
+			)
+		}
+	});
+	module.exports = lunchMenuComponent;
+
+/***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* WEBPACK VAR INJECTION */(function($) {__webpack_require__(165);
 	__webpack_require__(172);
 	__webpack_require__(160);
@@ -39318,7 +39450,6 @@
 		loadSettings: function (settings, timer){
 			this.setState({options: settings});
 			this.setState({pingTime: timer});
-			console.log(this.state);
 		},
 	
 		onChangeHandler: function (event){

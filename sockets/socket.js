@@ -1,5 +1,6 @@
 var fs = require('fs');
 var watcher = require('../src/jenkinsWatcher');
+var lunchScrapper = require('../src/lunchScrapper');
 
 var interval,
 	users = 0,
@@ -46,7 +47,7 @@ module.exports = function (io) {
 			if(sounds.length > 0)
 			{
 				var sound = sounds[Math.floor(Math.random()*sounds.length)];
-				socket.emit("buildBroke", sound);
+				io.to(room).emit("buildBroke", sound);
 			}
 		}
 
@@ -72,6 +73,16 @@ module.exports = function (io) {
 				soundsOnServer.push(option);
 			});
 			sounds = results;
+		}
+
+		var loadMenus = function() {
+			console.log("Getting the menu for this week");
+			var promise = lunchScrapper.getLunchMenu();
+			promise.then(function(result){
+				socket.emit("LoadMenus", result);
+			}, function(err){
+				console.log("Error" + err);
+			});
 		}
 
 		if(lastResult !== null){
@@ -128,6 +139,10 @@ module.exports = function (io) {
 				// interval = setInterval(checkBuild, (timer * 60000) );
 			}
 			io.to(room).emit('Settings', soundsOnServer, timer);
+		});
+
+		socket.on('GetMenus', function(){
+			loadMenus();
 		});
 
 	});
