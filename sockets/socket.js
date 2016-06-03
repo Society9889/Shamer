@@ -1,6 +1,7 @@
 var fs = require('fs');
 var watcher = require('../src/jenkinsWatcher');
 var lunchScrapper = require('../src/lunchScrapper');
+var weather = require('weather-js');
 
 var interval,
 	users = 0,
@@ -25,7 +26,7 @@ module.exports = function (io) {
 			var promise = watcher.checkBuild();
 			console.log("Checking the build");
 			promise.then( function(result) {
-			console.log("Build: " + result.number);
+			console.log("Build: " + result.number);2
 				if(lastResult === null || lastResult.number !== result.number ){
 					if(result.result === 'FAILURE'){
 						getRandomSound();
@@ -121,7 +122,7 @@ module.exports = function (io) {
 
 		socket.on('GetSettings', function(){
 			console.log('loading the settings');
-			socket.emit('Settings', soundsOnServer, timer);
+			socket.emit('Settings', soundsOnSderver, timer);
 		});
 
 		socket.on('SaveSettings', function(settings){
@@ -137,8 +138,8 @@ module.exports = function (io) {
 			if(settings.pingTime != timer)
 			{
 				timer = settings.pingTime;
-				// clearInterval(interval);
-				// interval = setInterval(checkBuild, (timer * 60000) );
+				clearInterval(interval);
+				interval = setInterval(checkBuild, (timer * 60000) );
 			}
 			io.to(room).emit('Settings', soundsOnServer, timer);
 		});
@@ -149,6 +150,16 @@ module.exports = function (io) {
 			} else {
 				loadMenus();
 			}
+		});
+
+		socket.on('GetWeather', function(){
+			// weather.find({search: 'Lexington, MA', degreeType: 'F'}, function(err, result) {
+			// 	if(err) console.log(err);
+
+			// 	console.log(result[0].current);
+			//   //console.log(JSON.stringify(result, null, 2));
+			//   socket.emit('TheWeather', result[0].current);
+			//});
 		});
 
 	});

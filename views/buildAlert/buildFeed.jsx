@@ -2,7 +2,7 @@ require('./testBoard.scss');
 require('bootstrap/dist/css/bootstrap.css');
 require('../../public/font-awesome/scss/font-awesome.scss');
 var io = require('socket.io-client');
-
+var update = require('react-addons-update');
 var socket;
 
 var React = require('react');
@@ -19,20 +19,20 @@ var buildAlertComponent = React.createClass({
 	componentDidMount: function(){
 		socket = this.props.sockets;
 		socket.on('buildResult', this.updateList);
-		// var test = {
-		// 	result: "SUCCESS",
-		// 	number: 666
-		// };
-		// this.setState({results: this.state.results.concat([test])});
-		// this.setState({count: this.state.count+1});
 	},
 
 	updateList: function (data){
 		var array = [];
-		array = array.push(data);
-		this.setState({results: this.state.results.concat([data])});
-		this.setState({count: this.state.count+1});
-		console.log(this.state.results);
+		if(this.state.count === 25){
+			//after the UI has 25 elements showing, we only want to show those 25.
+			this.setState({
+				results: update(this.state.results, {$splice: [[0,1]]}).concat([data])
+			});
+		} else {
+			this.setState({results: this.state.results.concat([data])});
+			this.setState({count: this.state.count+1});
+		}
+		console.log(this.state.results.length)
 	},
 
 	render: function() {

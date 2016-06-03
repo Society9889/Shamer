@@ -8,7 +8,6 @@ var jenkins = jenkinsapi.init(config.jenkinsServer);
 var jenkinsWatcher = {
 	
 	checkBuild : function() {
-		console.log(config.jenkinsServer + ' ' + config.project);
 		var promise = new Promise(function(resolve, reject){
 
 			jenkins.last_build_info(config.project, function(err, data) {

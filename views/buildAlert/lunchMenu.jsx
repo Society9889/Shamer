@@ -21,7 +21,6 @@ var lunchMenuComponent = React.createClass({
 
 	loadMenus: function(menus){
 		this.setState({menus: menus});
-		console.log(this.state);
 	},
 
 	render: function() {
