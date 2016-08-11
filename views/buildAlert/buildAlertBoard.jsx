@@ -1,4 +1,4 @@
-require('./testBoard.scss');
+require('./buildAlert.scss');
 require('bootstrap/dist/css/bootstrap.css');
 require('bootstrap/dist/js/bootstrap.js');
 var io = require('socket.io-client');
@@ -45,7 +45,7 @@ var buildAlertComponent = React.createClass({
 					<div className ="container row">
 						<div className="col-md-5">
 							<LunchMenu sockets={socket}/>
-							<Weather/>
+							<Weather sockets={socket}/>
 						</div>
 						<div className="col-md-7">
 							<BuildFeed sockets={socket}/>

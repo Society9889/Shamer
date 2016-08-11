@@ -19696,7 +19696,7 @@
 						React.createElement("div", {className: "container row"}, 
 							React.createElement("div", {className: "col-md-5"}, 
 								React.createElement(LunchMenu, {sockets: socket}), 
-								React.createElement(Weather, null)
+								React.createElement(Weather, {sockets: socket})
 							), 
 							React.createElement("div", {className: "col-md-7"}, 
 								React.createElement(BuildFeed, {sockets: socket})
@@ -19727,8 +19727,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./testBoard.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./testBoard.scss");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./buildAlert.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./buildAlert.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -19746,7 +19746,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".blog-masthead {\n  background-color: #428bca;\n  height: 90px;\n  box-shadow: 0px 5px 5px rgba(136, 136, 136, 0.4); }\n\n.hidden-audio {\n  display: none; }\n\n.container {\n  width: 100% !important;\n  font-size: 18px;\n  line-height: 1.5;\n  height: 700px;\n  overflow-y: auto;\n  margin-top: 30px; }\n\n.blog-nav-item {\n  position: relative;\n  display: inline-block;\n  padding: 10px 10px 10px 10px;\n  font-weight: 500;\n  color: #cdddeb;\n  font-size: 14px;\n  position: fixed; }\n\n.setting-button {\n  background-color: transparent;\n  border: none; }\n\n.setting-button:hover {\n  background-color: #4d95d2; }\n\n.nav-item {\n  display: inline-block;\n  padding-top: 13px;\n  padding-right: 10px; }\n\n.nav-item-right {\n  float: right;\n  display: inline-block;\n  height: 90px;\n  margin-right: 20px;\n  margin-top: 3px; }\n\n.setting-row {\n  margin: 5px !important; }\n\n.bell {\n  height: 64px; }\n\n.card {\n  margin-bottom: 20px;\n  background: rgba(225, 225, 232, 0.5);\n  padding: 10px;\n  height: 105px; }\n\n.card-title {\n  margin-bottom: 5px;\n  font-size: 40px;\n  float: left; }\n\n.fa-5x {\n  font-size: 5em;\n  float: right; }\n\n.failure {\n  color: red; }\n\n.success {\n  color: green; }\n\n.white {\n  color: #ebebeb; }\n\n.logo {\n  height: 45px; }\n\n.lunchHeight {\n  height: 400px;\n  background: rgba(225, 225, 232, 0.5); }\n\n.dayLabel {\n  text-align: center; }\n\n.menu {\n  margin-left: 20px; }\n\n.menuItem {\n  padding: 5px 3px 5px 3px; }\n\n.menuArrow {\n  top: 85% !important; }\n\nbody {\n  background-image: url(" + __webpack_require__(163) + "); }\n\n.setting-table-body {\n  height: 300px;\n  overflow-y: auto; }\n\n.bellAnimation {\n  -webkit-animation: spin 1s linear;\n  -moz-animation: spin 1s linear;\n  animation: spin 1s linear;\n  transform-origin: 50% 0%; }\n\n.remove-margin {\n  margin-bottom: 0px !important; }\n\n@-moz-keyframes spin {\n  33% {\n    -moz-transform: rotate(45deg); }\n  66% {\n    -moz-transform: rotate(-45deg); }\n  100% {\n    -moz-transform: rotate(0deg); } }\n\n@-webkit-keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg); } }\n\n@keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); } }\n", ""]);
+	exports.push([module.id, ".blog-masthead {\n  background-color: #428bca;\n  height: 90px;\n  box-shadow: 0px 5px 5px rgba(136, 136, 136, 0.4); }\n\n.weather-row {\n  margin-left: 0px !important;\n  margin-top: 5px;\n  margin-bottom: 5px; }\n\n.weather-card {\n  height: 290px;\n  width: 120px !important;\n  margin-right: 5px;\n  background: rgba(225, 225, 232, 0.5); }\n\n.hidden-audio {\n  display: none; }\n\n.container {\n  width: 100% !important;\n  font-size: 18px;\n  line-height: 1.5;\n  height: 700px;\n  overflow-y: auto;\n  margin-top: 30px; }\n\n.blog-nav-item {\n  position: relative;\n  display: inline-block;\n  padding: 10px 10px 10px 10px;\n  font-weight: 500;\n  color: #cdddeb;\n  font-size: 14px;\n  position: fixed; }\n\n.setting-button {\n  background-color: transparent;\n  border: none; }\n\n.setting-button:hover {\n  background-color: #4d95d2; }\n\n.nav-item {\n  display: inline-block;\n  padding-top: 13px;\n  padding-right: 10px; }\n\n.nav-item-right {\n  float: right;\n  display: inline-block;\n  height: 90px;\n  margin-right: 20px;\n  margin-top: 3px; }\n\n.setting-row {\n  margin: 5px !important; }\n\n.bell {\n  height: 64px; }\n\n.card {\n  margin-bottom: 20px;\n  background: rgba(225, 225, 232, 0.5);\n  padding: 10px;\n  height: 105px; }\n\n.card-title {\n  margin-bottom: 5px;\n  font-size: 40px;\n  float: left; }\n\n.fa-5x {\n  font-size: 5em;\n  float: right; }\n\n.failure {\n  color: red; }\n\n.success {\n  color: green; }\n\n.white {\n  color: #ebebeb; }\n\n.logo {\n  height: 45px; }\n\n.lunchHeight {\n  height: 400px;\n  background: rgba(225, 225, 232, 0.5); }\n\n.dayLabel {\n  text-align: center; }\n\n.menu {\n  margin-left: 20px; }\n\n.menuItem {\n  padding: 5px 3px 5px 3px; }\n\n.menuArrow {\n  top: 85% !important; }\n\nbody {\n  background-image: url(" + __webpack_require__(163) + "); }\n\n.setting-table-body {\n  height: 300px;\n  overflow-y: auto; }\n\n.bellAnimation {\n  -webkit-animation: spin 1s linear;\n  -moz-animation: spin 1s linear;\n  animation: spin 1s linear;\n  transform-origin: 50% 0%; }\n\n.remove-margin {\n  margin-bottom: 0px !important; }\n\n@-moz-keyframes spin {\n  33% {\n    -moz-transform: rotate(45deg); }\n  66% {\n    -moz-transform: rotate(-45deg); }\n  100% {\n    -moz-transform: rotate(0deg); } }\n\n@-webkit-keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg); } }\n\n@keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); } }\n", ""]);
 	
 	// exports
 
@@ -39681,32 +39681,39 @@
 	
 		getInitialState: function(){
 			return{
-				weather: {
-					temperature: 0,
-					imageUrl: ""
-				}
+				weather: []
 			}
 		},
 	
 		componentDidMount: function() {
-			//socket = this.props.sockets;
+			socket = this.props.sockets;
 			// navigator.getLocation.getCurrentPosition(function(position){
 			// 	console.log(position);
 			// })
-			//socket.emit("GetWeather");
-			//socket.on("TheWeather", this.loadWeather);
+			socket.emit("GetWeather");
+			socket.on("TheWeather", this.loadWeather);
 		},
 	
 		loadWeather: function(weatherData) {
-			console.log(weatherData);
-			this.setState({weather: weatherData});
+			this.setState({weather: this.state.weather.concat(weatherData)});
 		},
 	
 		render: function() {
 	
+			var weatherNodes = [];
+			console.log(this.state.weather);
+			for (var i = 0; i < this.state.weather.length; i ++){
+				var weatherData = this.state.weather[i],
+					temps = weatherData.high + " " + weatherData.low;
+				weatherNodes.push(
+						React.createElement("div", {key: i, className: "weather-card col-xs-2"}, 
+								React.createElement("h2", null, temps)
+						)
+				)
+			}
 			return (
-				React.createElement("div", null, 
-					"beep"
+				React.createElement("div", {className: "row weather-row"}, 
+					weatherNodes
 				)
 	
 			)

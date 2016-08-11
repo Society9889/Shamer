@@ -1,7 +1,7 @@
 var fs = require('fs');
 var watcher = require('../src/jenkinsWatcher');
 var lunchScrapper = require('../src/lunchScrapper');
-var weather = require('weather-js');
+var weather = require('../src/weatherInfo');
 
 var interval,
 	users = 0,
@@ -122,7 +122,7 @@ module.exports = function (io) {
 
 		socket.on('GetSettings', function(){
 			console.log('loading the settings');
-			socket.emit('Settings', soundsOnSderver, timer);
+			socket.emit('Settings', soundsOnServer, timer);
 		});
 
 		socket.on('SaveSettings', function(settings){
@@ -153,13 +153,12 @@ module.exports = function (io) {
 		});
 
 		socket.on('GetWeather', function(){
+			weather.getWeather();
 			// weather.find({search: 'Lexington, MA', degreeType: 'F'}, function(err, result) {
 			// 	if(err) console.log(err);
-
-			// 	console.log(result[0].current);
-			//   //console.log(JSON.stringify(result, null, 2));
-			//   socket.emit('TheWeather', result[0].current);
-			//});
+			  
+			//   socket.emit('TheWeather', result[0].forecast);
+			// });
 		});
 
 	});

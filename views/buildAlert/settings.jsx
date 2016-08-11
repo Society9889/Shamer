@@ -1,6 +1,6 @@
 require('bootstrap/dist/css/bootstrap.css');
 require('bootstrap/dist/js/bootstrap.js');
-require('./testBoard.scss');
+require('./buildAlert.scss');
 require('../../public/font-awesome/scss/font-awesome.scss');
 var io = require('socket.io-client');
 var socket;

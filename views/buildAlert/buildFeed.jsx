@@ -1,4 +1,4 @@
-require('./testBoard.scss');
+require('./buildAlert.scss');
 require('bootstrap/dist/css/bootstrap.css');
 require('../../public/font-awesome/scss/font-awesome.scss');
 var io = require('socket.io-client');

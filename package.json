@@ -21,6 +21,7 @@
     "jsx-loader": "^0.13.2",
     "less": "^2.6.0",
     "node-sass": "^3.4.2",
+    "openweathermap": "^1.0.0",
     "react": "^0.14.6",
     "react-addons-update": "^15.0.1",
     "react-bootstrap": "^0.28.2",

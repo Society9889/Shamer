@@ -1,6 +1,6 @@
 require('bootstrap/dist/css/bootstrap.css');
 require('bootstrap/dist/js/bootstrap.js');
-require('./testBoard.scss');
+require('./buildAlert.scss');
 require('../../public/font-awesome/scss/font-awesome.scss');
 var io = require('socket.io-client');
 var socket;
@@ -11,32 +11,39 @@ var weatherComponent = React.createClass({
 
 	getInitialState: function(){
 		return{
-			weather: {
-				temperature: 0,
-				imageUrl: ""
-			}
+			weather: []
 		}
 	},
 
 	componentDidMount: function() {
-		//socket = this.props.sockets;
+		socket = this.props.sockets;
 		// navigator.getLocation.getCurrentPosition(function(position){
 		// 	console.log(position);
 		// })
-		//socket.emit("GetWeather");
-		//socket.on("TheWeather", this.loadWeather);
+		socket.emit("GetWeather");
+		socket.on("TheWeather", this.loadWeather);
 	},
 
 	loadWeather: function(weatherData) {
-		console.log(weatherData);
-		this.setState({weather: weatherData});
+		this.setState({weather: this.state.weather.concat(weatherData)});
 	},
 
 	render: function() {
 
+		var weatherNodes = [];
+		console.log(this.state.weather);
+		for (var i = 0; i < this.state.weather.length; i ++){
+			var weatherData = this.state.weather[i],
+				temps = weatherData.high + " " + weatherData.low;
+			weatherNodes.push(
+					<div key={i} className="weather-card col-xs-2">
+							<h2>{temps}</h2>
+					</div>
+			)
+		}
 		return (
-			<div>
-				beep
+			<div className="row weather-row">
+				{weatherNodes}
 			</div>
 
 		)
