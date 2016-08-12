@@ -102,7 +102,7 @@ module.exports = function (io) {
 			}
 		}
 
-		checkBuild();
+		//checkBuild();
 
 		//getRandomSound();
 		console.log("Someone new?");
@@ -153,12 +153,18 @@ module.exports = function (io) {
 		});
 
 		socket.on('GetWeather', function(){
-			weather.getWeather();
-			// weather.find({search: 'Lexington, MA', degreeType: 'F'}, function(err, result) {
-			// 	if(err) console.log(err);
-			  
-			//   socket.emit('TheWeather', result[0].forecast);
-			// });
+			 //weather.find({search: 'Lexington, MA', degreeType: 'F'}, function(err, result) {
+			 //	if(err) console.log(err);
+			 //
+			 //  socket.emit('TheWeather', result[0].forecast);
+			 //});
+
+			var promise = weather.forecast('Lexington,MA');
+			promise.then( function(result) {
+				socket.emit('TheWeather', result.query.results.channel.item.forecast);
+			}, function(err){
+				console.log("Error " + err);
+			});
 		});
 
 	});

@@ -25,14 +25,14 @@ var weatherComponent = React.createClass({
 	},
 
 	loadWeather: function(weatherData) {
+		console.log(weatherData);
 		this.setState({weather: this.state.weather.concat(weatherData)});
 	},
 
 	render: function() {
 
 		var weatherNodes = [];
-		console.log(this.state.weather);
-		for (var i = 0; i < this.state.weather.length; i ++){
+		for (var i = 0; i < this.state.weather.length - 5; i ++){
 			var weatherData = this.state.weather[i],
 				temps = weatherData.high + " " + weatherData.low;
 			weatherNodes.push(
