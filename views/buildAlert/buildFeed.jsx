@@ -23,17 +23,16 @@ var buildAlertComponent = React.createClass({
 
 	updateList: function (data){
 		var array = [];
-		console.log(data);
-		// if(this.state.count === 25){
-		// 	//after the UI has 25 elements showing, we only want to show those 25.
-		// 	this.setState({
-		// 		results: update(this.state.results, {$splice: [[0,1]]}).concat([data])
-		// 	});
-		// } else {
-		// 	this.setState({results: this.state.results.concat([data])});
-		// 	this.setState({count: this.state.count+1});
-		// }
-		// console.log(this.state.results.length)
+		if(this.state.count === 25){
+			//after the UI has 25 elements showing, we only want to show those 25.
+			this.setState({
+				results: update(this.state.results, {$splice: [[0,1]]}).concat([data])
+			});
+		} else {
+			this.setState({results: this.state.results.concat([data])});
+			this.setState({count: this.state.count+1});
+		}
+		console.log(this.state.results.length)
 	},
 
 	render: function() {
