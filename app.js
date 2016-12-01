@@ -4,10 +4,10 @@ var router = require('./routes/routes.js')(app);
 var server = require('http').Server(app);
 var path = require("path");
 var io = require('socket.io')(server);
-var socket = require('./sockets/socket.js')
+var socket = require('./sockets/socket.js');
 
-var host = '172.16.4.68';
-//var host = 'localhost';
+//var host = '172.16.0.42';
+var host = 'localhost';
 var port = 3000;
 
 app.set('views', __dirname + '/views');

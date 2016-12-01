@@ -19674,6 +19674,7 @@
 		},
 	
 		buildBroke: function(sound) {
+			console.log('buildBroke');
 			setTimeout(function() {document.getElementById('bell').className+=" bellAnimation"; } , 500);
 			Player = new Audio("/media/" + sound);
 			Player.play();
@@ -19746,7 +19747,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".blog-masthead {\n  background-color: #428bca;\n  height: 90px;\n  box-shadow: 0px 5px 5px rgba(136, 136, 136, 0.4); }\n\n.weather-row {\n  margin-left: 0px !important;\n  margin-top: 5px;\n  margin-bottom: 5px; }\n\n.weather-card {\n  height: 290px;\n  width: 120px !important;\n  margin-right: 5px;\n  background: rgba(225, 225, 232, 0.5);\n  text-align: center; }\n\n.wi {\n  font-size: 44px !important; }\n\n.hidden-audio {\n  display: none; }\n\n.container {\n  width: 100% !important;\n  font-size: 18px;\n  line-height: 1.5;\n  height: 700px;\n  overflow-y: auto;\n  margin-top: 30px; }\n\n.blog-nav-item {\n  position: relative;\n  display: inline-block;\n  padding: 10px 10px 10px 10px;\n  font-weight: 500;\n  color: #cdddeb;\n  font-size: 14px;\n  position: fixed; }\n\n.setting-button {\n  background-color: transparent;\n  border: none; }\n\n.setting-button:hover {\n  background-color: #4d95d2; }\n\n.nav-item {\n  display: inline-block;\n  padding-top: 13px;\n  padding-right: 10px; }\n\n.nav-item-right {\n  float: right;\n  display: inline-block;\n  height: 90px;\n  margin-right: 20px;\n  margin-top: 3px; }\n\n.setting-row {\n  margin: 5px !important; }\n\n.bell {\n  height: 64px; }\n\n.card {\n  margin-bottom: 20px;\n  background: rgba(225, 225, 232, 0.5);\n  padding: 10px;\n  height: 105px; }\n\n.card-title {\n  margin-bottom: 5px;\n  font-size: 40px;\n  float: left; }\n\n.fa-5x {\n  font-size: 5em;\n  float: right; }\n\n.failure {\n  color: red; }\n\n.success {\n  color: green; }\n\n.white {\n  color: #ebebeb; }\n\n.logo {\n  height: 45px; }\n\n.lunchHeight {\n  height: 400px;\n  background: rgba(225, 225, 232, 0.5); }\n\n.dayLabel {\n  text-align: center; }\n\n.menu {\n  margin-left: 20px; }\n\n.menuItem {\n  padding: 5px 3px 5px 3px; }\n\n.menuArrow {\n  top: 85% !important; }\n\nbody {\n  background-image: url(" + __webpack_require__(163) + "); }\n\n.setting-table-body {\n  height: 300px;\n  overflow-y: auto; }\n\n.bellAnimation {\n  -webkit-animation: spin 1s linear;\n  -moz-animation: spin 1s linear;\n  animation: spin 1s linear;\n  transform-origin: 50% 0%; }\n\n.remove-margin {\n  margin-bottom: 0px !important; }\n\n@-moz-keyframes spin {\n  33% {\n    -moz-transform: rotate(45deg); }\n  66% {\n    -moz-transform: rotate(-45deg); }\n  100% {\n    -moz-transform: rotate(0deg); } }\n\n@-webkit-keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg); } }\n\n@keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); } }\n", ""]);
+	exports.push([module.id, ".blog-masthead {\n  background-color: #428bca;\n  height: 90px;\n  box-shadow: 0px 5px 5px rgba(136, 136, 136, 0.4); }\n\n.weather-row {\n  margin-left: 0px !important;\n  margin-top: 5px;\n  margin-bottom: 5px;\n  width: 100%; }\n\n.weather-card {\n  height: 290px;\n  width: 19.05% !important;\n  margin-left: 0.8%;\n  background: rgba(225, 225, 232, 0.5);\n  text-align: center; }\n\n.wi {\n  font-size: 44px !important; }\n\n.hidden-audio {\n  display: none; }\n\n.container {\n  width: 100% !important;\n  font-size: 18px;\n  line-height: 1.5;\n  height: 700px;\n  overflow-y: auto;\n  margin-top: 30px; }\n\n.blog-nav-item {\n  position: relative;\n  display: inline-block;\n  padding: 10px 10px 10px 10px;\n  font-weight: 500;\n  color: #cdddeb;\n  font-size: 14px;\n  position: fixed; }\n\n.setting-button {\n  background-color: transparent;\n  border: none; }\n\n.setting-button:hover {\n  background-color: #4d95d2; }\n\n.nav-item {\n  display: inline-block;\n  padding-top: 13px;\n  padding-right: 10px; }\n\n.nav-item-right {\n  float: right;\n  display: inline-block;\n  height: 90px;\n  margin-right: 20px;\n  margin-top: 3px; }\n\n.setting-row {\n  margin: 5px !important; }\n\n.bell {\n  height: 64px; }\n\n.card {\n  margin-bottom: 20px;\n  background: rgba(225, 225, 232, 0.5);\n  padding: 10px;\n  height: 105px; }\n\n.card-title {\n  margin-bottom: 5px;\n  font-size: 40px;\n  float: left; }\n\n.fa-5x {\n  font-size: 5em;\n  float: right; }\n\n.failure {\n  color: red; }\n\n.success {\n  color: green; }\n\n.white {\n  color: #ebebeb; }\n\n.logo {\n  height: 45px; }\n\n.lunchHeight {\n  height: 400px;\n  background: rgba(225, 225, 232, 0.5); }\n\n.dayLabel {\n  text-align: center; }\n\n.menu {\n  margin-left: 20px; }\n\n.menuItem {\n  padding: 5px 3px 5px 3px; }\n\n.menuArrow {\n  top: 85% !important; }\n\nbody {\n  background-image: url(" + __webpack_require__(163) + "); }\n\n.setting-table-body {\n  height: 300px;\n  overflow-y: auto; }\n\n.bellAnimation {\n  -webkit-animation: spin 1s linear;\n  -moz-animation: spin 1s linear;\n  animation: spin 1s linear;\n  transform-origin: 50% 0%; }\n\n.remove-margin {\n  margin-bottom: 0px !important; }\n\n@-moz-keyframes spin {\n  33% {\n    -moz-transform: rotate(45deg); }\n  66% {\n    -moz-transform: rotate(-45deg); }\n  100% {\n    -moz-transform: rotate(0deg); } }\n\n@-webkit-keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg); } }\n\n@keyframes spin {\n  33% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(45deg); }\n  66% {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(-45deg); }\n  100% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); } }\n", ""]);
 	
 	// exports
 
@@ -39172,16 +39173,17 @@
 	
 		updateList: function (data){
 			var array = [];
-			if(this.state.count === 25){
-				//after the UI has 25 elements showing, we only want to show those 25.
-				this.setState({
-					results: update(this.state.results, {$splice: [[0,1]]}).concat([data])
-				});
-			} else {
-				this.setState({results: this.state.results.concat([data])});
-				this.setState({count: this.state.count+1});
-			}
-			console.log(this.state.results.length)
+			console.log(data);
+			// if(this.state.count === 25){
+			// 	//after the UI has 25 elements showing, we only want to show those 25.
+			// 	this.setState({
+			// 		results: update(this.state.results, {$splice: [[0,1]]}).concat([data])
+			// 	});
+			// } else {
+			// 	this.setState({results: this.state.results.concat([data])});
+			// 	this.setState({count: this.state.count+1});
+			// }
+			// console.log(this.state.results.length)
 		},
 	
 		render: function() {
@@ -39757,11 +39759,11 @@
 			if(timer <= 0){
 				timer += 86400000;
 			}
-			console.log(timer);
+	
 			weatherInvterval = window.setTimeout(function(){
 				socket.emit("GetWeather");
 				me.setUpWeatherInterval(socket);
-			} , 2000);
+			} , timer);
 		},
 	
 		loadWeather: function(weatherData) {

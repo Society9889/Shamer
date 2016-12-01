@@ -1,4 +1,7 @@
 module.exports = {
 	jenkinsServer: '',
-	project: ''
+	project: '',
+	serviceAccount: "",
+    databaseURL: "",
+    serverKey: ""
 }

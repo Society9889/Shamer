@@ -87,7 +87,7 @@ var weatherComponent = React.createClass({
 		if(timer <= 0){
 			timer += 86400000;
 		}
-		console.log(timer);
+
 		weatherInvterval = window.setTimeout(function(){
 			socket.emit("GetWeather");
 			me.setUpWeatherInterval(socket);

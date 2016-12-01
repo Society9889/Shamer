@@ -2,6 +2,7 @@ var fs = require('fs');
 var watcher = require('../src/jenkinsWatcher');
 var lunchScrapper = require('../src/lunchScrapper');
 var weather = require('../src/weatherInfo');
+var fbClient = require('../src/FirebaseServerClient');
 
 var interval,
 	users = 0,
@@ -9,49 +10,19 @@ var interval,
 	menus = [],
 	soundsOnServer = [],
 	sounds = [],
-	timer = 5,
-	lastResult = null;
+	timer = 5;
 
 module.exports = function (io) {
+
+	//set up the connection to firebase
+	fbClient.initSetup();
+
+	//set up the jenkins watcher
+	watcher.setUpWatcher(room, io, fbClient);
 
 	io.on('connection', function (socket) {
 		socket.join(room);
 		users+=1;
-
-		/**
-		* CheckBuild will set up a promise and use that to get the
-		*  status of the build from an async call.
-		*/
-		var checkBuild = function(){
-			var promise = watcher.checkBuild();
-			console.log("Checking the build");
-			promise.then( function(result) {
-			console.log("Build: " + result.number);2
-				if(lastResult === null || lastResult.number !== result.number ){
-					if(result.result === 'FAILURE'){
-						getRandomSound();
-					}
-					if(result.result === 'SUCCESS' || result.result === 'FAILURE'){
-						io.to(room).emit('buildResult', result);
-						lastResult = result;
-					}
-				}
-			}, function(err){
-				console.log("Error " + err);
-			});
-		}
-
-		/**
-		* Gets a random sound from the list of enabled sounds and sends it to the
-		* frontend.
-		*/
-		var getRandomSound = function(){
-			if(sounds.length > 0)
-			{
-				var sound = sounds[Math.floor(Math.random()*sounds.length)];
-				io.to(room).emit("buildBroke", sound);
-			}
-		}
 
 		var loadSettings = function() {
 			var results = [];
@@ -75,6 +46,7 @@ module.exports = function (io) {
 				soundsOnServer.push(option);
 			});
 			sounds = results;
+			watcher.updateSounds(results);
 		}
 
 		var loadMenus = function() {
@@ -88,31 +60,15 @@ module.exports = function (io) {
 			});
 		}
 
-		if(lastResult !== null){
-		 	if(lastResult.result === 'FAILURE'){
-		 		getRandomSound();
-		 	}
-		 	socket.emit('buildResult', lastResult);
+		watcher.getLastResult(socket);
+
+		if(sounds.length === 0){
+			loadSettings();
 		}
-
-		if(users === 1){
-			interval = setInterval(checkBuild, timer * 60000 );
-			if(sounds.length === 0){
-				loadSettings();
-			}
-		}
-
-		//checkBuild();
-
-		//getRandomSound();
-		console.log("Someone new?");
 
 		socket.on('disconnect', function(){
 			console.log("Bye Bye");
 			users-=1;
-			if(users <=0 ){
-				clearInterval(interval);
-			}
 		});
 
 		socket.on('SHAME', function() {
@@ -121,7 +77,7 @@ module.exports = function (io) {
 		});
 
 		socket.on('GetSettings', function(){
-			console.log('loading the settings');
+			console.log('Requesting the settings');
 			socket.emit('Settings', soundsOnServer, timer);
 		});
 
@@ -130,16 +86,16 @@ module.exports = function (io) {
 
 			settings.options.forEach(function(option){
 				if(option.enabled){
-					newSounds.push
+					newSounds.push(option.sound);
 				}
 			});
 			sounds = newSounds;
+			watcher.updateSounds(newSounds);
+			soundsOnServer = [];
 			soundsOnServer = settings.options;
-			if(settings.pingTime != timer)
-			{
+			if(settings.pingTime != timer){
 				timer = settings.pingTime;
-				clearInterval(interval);
-				interval = setInterval(checkBuild, (timer * 60000) );
+				watcher.updateWatcher(settings.pingTime);
 			}
 			io.to(room).emit('Settings', soundsOnServer, timer);
 		});
@@ -153,12 +109,6 @@ module.exports = function (io) {
 		});
 
 		socket.on('GetWeather', function(){
-			 //weather.find({search: 'Lexington, MA', degreeType: 'F'}, function(err, result) {
-			 //	if(err) console.log(err);
-			 //
-			 //  socket.emit('TheWeather', result[0].forecast);
-			 //});
-
 			var promise = weather.forecast('Lexington,MA');
 			promise.then( function(result) {
 				socket.emit('TheWeather', result.query.results.channel.item.forecast);

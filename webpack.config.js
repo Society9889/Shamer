@@ -5,8 +5,8 @@ var root = __dirname;
 
 module.exports = {
 	entry: {
-		shamer: './views/entries/shameEntry.jsx',
-		shameBoard: './views/entries/shameBoardEntry.jsx',
+		// shamer: './views/entries/shameEntry.jsx',
+		// shameBoard: './views/entries/shameBoardEntry.jsx',
         buildAlertBoard: './views/entries/buildAlertEntry.jsx',
 	},
 	output: {

@@ -23,6 +23,7 @@ var buildAlertComponent = React.createClass({
 	},
 
 	buildBroke: function(sound) {
+		console.log('buildBroke');
 		setTimeout(function() {document.getElementById('bell').className+=" bellAnimation"; } , 500);
 		Player = new Audio("/media/" + sound);
 		Player.play();
